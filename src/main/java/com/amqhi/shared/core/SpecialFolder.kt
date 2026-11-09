@@ -1,0 +1,9 @@
+package com.amqhi.shared.core
+
+import java.util.UUID
+
+object SpecialFolder {
+    val HOME = UUID(0x1111111111111111, 0x1111111111111111);
+    val TRASH = UUID(0x1111111111111111, 0x1111111111111112)
+    val UNKNOWN = UUID(0x0000000000000000, 0x0000000000000000)
+}
