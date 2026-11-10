@@ -33,33 +33,10 @@ android {
         }
     }
 
-    ndkVersion = if(minimumSdkVersion >= 24) "26.1.10909125" else "23.2.8568313"
-
-    externalNativeBuild {
-        cmake {
-            path = file("src/main/cpp/CMakeLists.txt")
-            version = "3.22.1"
-        }
-    }
-
     defaultConfig {
         minSdk = minimumSdkVersion
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-
-        externalNativeBuild {
-            cmake {
-                localProperties.getProperty("SHARED_SOURCES_CMAKE_PATH")
-                    ?.trim()
-                    ?.takeIf { it.isNotEmpty() }
-                    ?.let { arguments += "-DSHARED_SOURCES_CMAKE_PATH=$it" }
-
-                localProperties.getProperty("CLOUD_SOURCES_CMAKE_PATH")
-                    ?.trim()
-                    ?.takeIf { it.isNotEmpty() }
-                    ?.let { arguments += "-DCLOUD_SOURCES_CMAKE_PATH=$it" }
-            }
-        }
     }
 
     buildTypes {
