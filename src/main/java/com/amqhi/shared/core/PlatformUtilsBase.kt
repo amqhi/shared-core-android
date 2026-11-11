@@ -4,7 +4,7 @@ import java.io.File
 import java.security.MessageDigest
 
 open class PlatformUtilsBase {
-    fun getFileSha256Checksum(filePath: String): String {
+    open fun getFileSha256Checksum(filePath: String): String {
         val digest = MessageDigest.getInstance("SHA-256")
         File(filePath).inputStream().use { input ->
             val buffer = ByteArray(8192)
